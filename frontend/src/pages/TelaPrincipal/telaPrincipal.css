@@ -1,0 +1,276 @@
+/* IMPORTANDO A FONTE INTER DO GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* RESET ESPECÍFICO DO COMPONENTE */
+.tela-principal {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================
+   CABEÇALHO
+===================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background-color: #ffffff;
+  border-bottom: 4px solid var(--cor-amarelo);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo h2 {
+  color: var(--texto-escuro);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.logo span {
+  color: var(--cor-vermelho);
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+}
+
+.menu a {
+  color: var(--texto-escuro);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: var(--cor-vermelho);
+}
+
+.carrinho-btn {
+  background-color: var(--cor-azul-claro);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+
+.carrinho-btn:hover {
+  background-color: #4a9fae;
+}
+
+.badge-contador {
+  background-color: var(--cor-vermelho);
+  padding: 2px 8px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* =====================================
+   BANNER HERO
+===================================== */
+.hero {
+  background-color: var(--cor-amarelo);
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.tag-lancamento {
+  background-color: var(--cor-rosa);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: var(--texto-escuro);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.btn-destaque {
+  background-color: var(--cor-vermelho);
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-destaque:hover {
+  background-color: #a30505;
+  transform: translateY(-3px);
+}
+
+/* =====================================
+   VITRINE E CARDS
+===================================== */
+.vitrine {
+  padding: 60px 8%;
+  flex: 1;
+}
+
+.cabecalho-secao {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.titulo-secao {
+  color: var(--texto-escuro);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background-color: var(--bg-quadros);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border-color: var(--cor-azul-claro);
+}
+
+.badge-promocao {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--cor-amarelo-escuro);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+.badge-promocao.rosa {
+  background-color: var(--cor-rosa);
+}
+
+.img-placeholder {
+  height: 200px;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b0b0b0; /* Deixei o ícone um pouco mais claro aqui */
+}
+
+.card-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-info h3 {
+  font-size: 1.1rem;
+  color: var(--texto-escuro);
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.precos {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.preco-antigo {
+  text-decoration: line-through;
+  color: var(--texto-cinza);
+  font-size: 0.85rem;
+}
+
+.preco-atual {
+  color: var(--cor-vermelho);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* =====================================
+   BOTÃO DE AÇÃO
+===================================== */
+.btn-comprar {
+  background-color: var(--cor-verde);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.btn-comprar:hover {
+  background-color: var(--cor-verde-escuro);
+}
+
+/* =====================================
+   RODAPÉ
+===================================== */
+.footer {
+  background-color: var(--cor-azul-claro);
+  color: white;
+  padding: 30px 8%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-content h2 {
+  margin-bottom: 10px;
+  font-weight: 800;
+}

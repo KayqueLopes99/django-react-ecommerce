@@ -3,10 +3,26 @@ import os
 from PIL import Image
 from django.db import models
 from django.utils.text import slugify
-# from utils import utils
+
+# 1. NOVA CLASSE: CATEGORIA (Deve vir antes de Produto)
+class Categoria(models.Model):
+    nome = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.nome
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nome)
+        super().save(*args, **kwargs)
 
 
 class Produto(models.Model):
+    # 2. NOVO CAMPO: RELACIONAMENTO COM CATEGORIA
+    # O on_delete=models.DO_NOTHING (ou CASCADE/SET_NULL) define o que acontece com o produto se a categoria for apagada
+    categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, null=True, blank=True)
+    
     nome = models.CharField(max_length=255)
     descricao_curta = models.TextField(max_length=255)
     descricao_longa = models.TextField()
@@ -25,7 +41,6 @@ class Produto(models.Model):
     )
 
     slug = models.SlugField(unique=True, blank=True, null=True)
-
 
     def get_preco_formatado(self):
         return f'R$ {self.preco_marketing:.2f}'.replace('.', ',')
@@ -56,8 +71,7 @@ class Produto(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            slug = f'{slugify(self.nome)}'
-            self.slug = slug
+            self.slug = slugify(self.nome)
 
         super().save(*args, **kwargs)
 
