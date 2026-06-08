@@ -1,23 +1,61 @@
 import React from 'react';
-import { FiShoppingCart, FiImage } from 'react-icons/fi';
+import { FiShoppingCart, FiImage, FiUser, FiLogOut } from 'react-icons/fi'; // Adicionei o FiLogOut aqui
+import { Link, useNavigate } from 'react-router-dom'; // Adicionei o useNavigate aqui
 import './TelaPrincipal.css';
 
+// Importando a sua nova imagem de logo
+import logoImg from '../../assets/logo.png';
+
 const TelaPrincipal = () => {
+  const navigate = useNavigate(); // Inicializa o redirecionador
+  
+  // Puxando o nome do usuário logado
+  const nomeUsuario = localStorage.getItem('nomeUsuario') || "Visitante";
+
+  // Função mágica do Logout
+  const handleLogout = () => {
+    // 1. Remove o nome do usuário da memória (tira o crachá)
+    localStorage.removeItem('nomeUsuario');
+    // 2. Joga ele de volta para a tela de login
+    navigate('/login');
+  };
+
   return (
     <div className="tela-principal">
-      {/* CABEÇALHO LIMPO */}
+      {/* CABEÇALHO ATUALIZADO */}
       <header className="navbar">
+        
+        {/* LOGO E NOME */}
         <div className="logo">
+          <img src={logoImg} alt="Logo Kayque Store" className="logo-img" />
           <h2>Kayque<span>Store</span></h2>
         </div>
+        
+        {/* MENU CENTRAL */}
         <nav className="menu">
-          <a href="#">Início</a>
+          <Link to="/">Início</Link>
           <a href="#">Categorias</a>
           <a href="#">Ofertas</a>
         </nav>
-        <button className="carrinho-btn">
-          <FiShoppingCart size={20} /> Carrinho <span className="badge-contador">0</span>
-        </button>
+        
+        {/* ÁREA DO USUÁRIO (Saudação, Perfil, Logout e Carrinho) */}
+        <div className="acoes-usuario">
+          <span className="saudacao">Olá, <strong>{nomeUsuario}</strong>!</span>
+          
+          <Link to="/perfil" className="btn-perfil" title="Meu Perfil">
+            <FiUser size={20} />
+          </Link>
+
+          {/* NOVO BOTÃO DE LOGOUT AQUI */}
+          <button onClick={handleLogout} className="btn-logout" title="Sair da Conta">
+            <FiLogOut size={20} />
+          </button>
+          
+          <button className="carrinho-btn">
+            <FiShoppingCart size={20} /> Carrinho <span className="badge-contador">0</span>
+          </button>
+        </div>
+
       </header>
 
       <main>

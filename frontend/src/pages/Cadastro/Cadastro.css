@@ -1,0 +1,178 @@
+/* =====================================
+   FUNDO DA TELA (Degradê)
+===================================== */
+.cadastro-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--cor-amarelo) 0%, var(--bg-site) 100%);
+  font-family: 'Inter', sans-serif;
+  padding: 40px 20px; /* Espaço extra para não grudar no topo da tela */
+}
+
+/* =====================================
+   CARTÃO PRETO (Mais largo para o Grid)
+===================================== */
+.cadastro-card {
+  background-color: #1a1a1a;
+  padding: 60px 40px 40px;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 650px; /* Mais largo que o login */
+  position: relative;
+}
+
+.cadastro-titulo {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Avatar flutuante igual ao Login */
+.avatar-circle {
+  background-color: var(--cor-verde);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================
+   FORMULÁRIO E GRID
+===================================== */
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sessao-titulo {
+  color: var(--cor-amarelo);
+  font-size: 0.95rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Coloca os inputs lado a lado na mesma linha */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Se a tela for de celular, volta a ficar um embaixo do outro */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-grid input, .form-grid select {
+  background-color: #ffffff;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #333333;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-grid input::placeholder {
+  color: #a0a0a0;
+}
+
+/* =====================================
+   ERROS E BOTÕES
+===================================== */
+.mensagem-erro-cadastro {
+  background-color: rgba(192, 6, 6, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.cadastro-btn {
+  background-color: var(--cor-verde);
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+}
+
+.cadastro-btn:hover {
+  background-color: var(--cor-verde-escuro);
+}
+
+.cadastro-footer {
+  text-align: center;
+  color: #bbbbbb;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.cadastro-footer a {
+  color: var(--cor-verde);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ... [Mantenha todo o seu CSS anterior aqui] ... */
+
+/* =====================================
+   OLHINHO DA SENHA (NOVO)
+===================================== */
+.senha-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.senha-group input {
+  width: 100%;
+  padding-right: 40px; /* Dá um espaço extra à direita para o texto não ficar embaixo do ícone */
+}
+
+.btn-olhinho-cadastro {
+  position: absolute;
+  right: 12px; /* Posiciona o botão dentro do input */
+  background: none;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.btn-olhinho-cadastro:hover {
+  color: var(--cor-verde);
+}

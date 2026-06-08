@@ -23,3 +23,7 @@ def valida_cep(cep):
     cep_limpo = re.sub(r'[^0-9]', '', str(cep))
 
     return len(cep_limpo) == 8
+
+def valida_email(email):
+    padrao_email = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    return re.match(padrao_email, email) is not None

@@ -25,6 +25,19 @@
   z-index: 100;
 }
 
+/* ALINHAMENTO DO NOVO LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.logo-img {
+  height: 80px; 
+  width: auto;
+  object-fit: contain;
+}
+
 .logo h2 {
   color: var(--texto-escuro);
   font-size: 1.8rem;
@@ -50,6 +63,64 @@
 
 .menu a:hover {
   color: var(--cor-vermelho);
+}
+
+/* =====================================
+   ÁREA DO USUÁRIO (Novo bloco)
+===================================== */
+.acoes-usuario {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.saudacao {
+  color: var(--texto-escuro);
+  font-size: 0.95rem;
+}
+
+.saudacao strong {
+  color: var(--cor-verde); 
+}
+
+.btn-perfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: var(--texto-escuro);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+
+.btn-perfil:hover {
+  background-color: var(--cor-verde);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* NOVO: ESTILO DO BOTÃO DE LOGOUT */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: var(--texto-escuro);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: var(--cor-vermelho); /* Fica vermelho pra indicar "sair" */
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .carrinho-btn {
@@ -203,7 +274,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b0b0b0; /* Deixei o ícone um pouco mais claro aqui */
+  color: #b0b0b0; 
 }
 
 .card-info {

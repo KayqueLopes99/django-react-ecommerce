@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from utils.validacoes import valida_cpf, valida_cep
+from utils.validacoes import valida_cpf, valida_cep, valida_email
 
 class PerfilUsuario(models.Model):
     ESTADO_CHOICES = [
@@ -58,6 +58,9 @@ class PerfilUsuario(models.Model):
         
         if not valida_cep(self.cep):
             error_messages['cep'] = 'CEP inválido: deve conter exatamente 8 dígitos.'
+            
+        if not valida_email(self.user.email):
+            error_messages['email'] = 'Email inválido: formato incorreto.'
             
         if error_messages:
             raise ValidationError(error_messages)

@@ -1,0 +1,200 @@
+/* =====================================
+   FUNDO DA TELA (Degradê Amarelo/Bege)
+===================================== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--cor-amarelo) 0%, var(--bg-site) 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   CARTÃO PRETO
+===================================== */
+.login-card {
+  background-color: #1a1a1a; 
+  padding: 60px 40px 40px; 
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+}
+
+/* =====================================
+   AVATAR VERDE (O círculo que sai do card)
+===================================== */
+.avatar-circle {
+  background-color: var(--cor-verde);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -45px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================
+   FORMULÁRIO E INPUTS
+===================================== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 15px;
+}
+
+.mensagem-erro {
+  color: var(--cor-vermelho);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.input-icon {
+  background-color: #f0f0f0;
+  color: #666666;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #e0e0e0;
+}
+
+.input-group input {
+  border: none;
+  padding: 12px 15px;
+  flex: 1;
+  font-size: 1rem;
+  color: #333333;
+  outline: none;
+  width: 100%;
+}
+
+.input-group input::placeholder {
+  color: #a0a0a0;
+}
+
+/* =====================================
+   BOTÃO DO OLHINHO (Toggle Senha)
+===================================== */
+.btn-olhinho {
+  background: none;
+  border: none;
+  padding: 0 15px;
+  color: #666666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.btn-olhinho:hover {
+  color: var(--cor-verde);
+}
+
+/* =====================================
+   OPÇÕES (Lembre de mim)
+===================================== */
+.login-options {
+  display: flex;
+  justify-content: flex-start; /* Ajustado para manter o checkbox à esquerda */
+  align-items: center;
+  font-size: 0.85rem;
+  color: #bbbbbb;
+}
+
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* =====================================
+   BOTÃO DE LOGIN VERDE
+===================================== */
+.login-btn {
+  background-color: var(--cor-verde);
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-btn:hover {
+  background-color: var(--cor-verde-escuro);
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+/* =====================================
+   LINK PARA CADASTRO
+===================================== */
+.cadastro-link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+.cadastro-link a {
+  color: var(--cor-verde);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: color 0.2s;
+}
+
+.cadastro-link a:hover {
+  color: var(--cor-verde-escuro);
+}
+
+/* ... [Resto do seu CSS lá para cima] ... */
+
+.mensagem-erro {
+  color: var(--cor-vermelho);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+/* =====================================
+   MENSAGEM DE SUCESSO (NOVO)
+===================================== */
+.mensagem-sucesso {
+  color: var(--cor-verde);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+/* ... [Resto do seu CSS lá para baixo] ... */
