@@ -5,4 +5,6 @@ urlpatterns = [
     path('api/cadastro/', views.CadastroView.as_view(), name='api_cadastro'),
     path('api/login/', views.LoginView.as_view(), name='api_login'),
     path('api/logout/', views.LogoutView.as_view(), name='api_logout'),
+    path('api/meu-perfil/', views.DadosPerfilView.as_view(), name='api_meu_perfil'),
+    path('api/trocar-senha/', views.TrocarSenhaView.as_view(), name='api_trocar_senha'),
 ]

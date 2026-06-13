@@ -19,6 +19,7 @@ class ProdutoAdmin(admin.ModelAdmin):
     # 2. ADICIONEI A 'categoria' AQUI NA LISTA DE EXIBIÇÃO
     list_display = ['nome', 'descricao_curta', 'categoria',
                     'get_preco_formatado', 'get_preco_promocional_formatado']
+    prepopulated_fields = {'slug': ('nome',)}
     
     inlines = [
         VariacaoInline

@@ -5,6 +5,8 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 from .serializers import CadastroSerializer
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UsuarioPerfilSerializer, TrocarSenhaSerializer
 
 class CadastroView(APIView):
     def post(self, request):
@@ -52,3 +54,42 @@ class LogoutView(APIView):
             {"mensagem": "Logout realizado com sucesso!"}, 
             status=status.HTTP_200_OK
         )
+        
+
+
+# 1. View para ler os dados do usuário logado
+class DadosPerfilView(APIView):
+    permission_classes = [IsAuthenticated] # O Segurança: Só passa se tiver logado
+
+    def get(self, request):
+        # O 'request.user' já sabe quem é o usuário graças ao token/sessão do login
+        serializer = UsuarioPerfilSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# 2. View para trocar a senha
+class TrocarSenhaView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        serializer = TrocarSenhaSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            user = request.user
+            senha_antiga = serializer.validated_data['senha_antiga']
+            senha_nova = serializer.validated_data['senha_nova']
+
+            # Verifica se a senha antiga que ele digitou confere com a do banco
+            if not user.check_password(senha_antiga):
+                return Response(
+                    {"erro": "A senha antiga está incorreta."}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Se passou, criptografa a nova senha e salva!
+            user.set_password(senha_nova)
+            user.save()
+            
+            return Response({"mensagem": "Senha atualizada com sucesso!"}, status=status.HTTP_200_OK)
+            
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

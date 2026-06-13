@@ -2,21 +2,28 @@
    VARIÁVEIS GLOBAIS (PALETA DE CORES)
 ========================================= */
 :root {
-  --bg-site: #fcf0cd;         
-  --bg-quadros: #F2F2F2;      
+  /* Bases e Fundos */
+  --bg-site: #FBFAF9;         /* Branco / Off-White */
+  --bg-quadros: #CBD2D6;      /* Cinza Claro */
   
-  --cor-azul-claro: #5DC1D0;  
-  --cor-amarelo: #F2B705;     
-  --cor-amarelo-escuro: #BF7E04; 
+  /* Tons Frios */
+  --cor-azul-claro: #75A3BF;  /* Azul Claro */
   
-  --cor-verde: #03A63C;       
-  --cor-verde-escuro: #3E732F;
+  /* Tons Terrosos (Mapeados nos antigos amarelos) */
+  --cor-amarelo: #F2C8A2;     /* Pêssego / Bege */
+  --cor-amarelo-escuro: #A65D33; /* Ferrugem / Caramelo */
   
-  --cor-rosa: #F25790;        
-  --cor-vermelho: #C00606;    
+  /* Botões Principais (Mapeados nos antigos verdes) */
+  --cor-verde: #616F8C;       /* Azul Ardósia Escuro */
+  --cor-verde-escuro: #2E312F;/* Preto Carvão (Para o efeito de Hover) */
   
-  --texto-escuro: #2b2b2b;
-  --texto-cinza: #666666;
+  /* Destaques e Alertas */
+  --cor-rosa: #D9626B;        /* Rosa / Salmão */
+  --cor-vermelho: #883440;    /* Bordô / Vinho */
+  
+  /* Textos */
+  --texto-escuro: #2E312F;    /* Preto Carvão */
+  --texto-cinza: #654F40;     /* Marrom Escuro */
 }
 
 /* =========================================

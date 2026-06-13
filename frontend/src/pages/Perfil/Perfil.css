@@ -1,0 +1,200 @@
+/* =====================================
+   FUNDO E LAYOUT GERAL
+===================================== */
+.perfil-container {
+  min-height: 100vh;
+  background-color: var(--bg-site); /* Off-White da paleta */
+  font-family: 'Inter', sans-serif;
+  padding: 40px 8%;
+  color: var(--texto-escuro);
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.perfil-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--texto-escuro);
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-verde); /* Azul Ardósia */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  align-self: flex-start;
+}
+
+.btn-voltar:hover {
+  color: var(--cor-vermelho); /* Hover Bordô */
+}
+
+/* =====================================
+   GRID DE CARDS (Layout Dividido)
+===================================== */
+.perfil-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .perfil-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================
+   ESTILO DOS CARDS
+===================================== */
+.perfil-card {
+  background-color: var(--bg-quadros); /* Cinza Claro */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.card-cabecalho h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* =====================================
+   LISTA DE DADOS
+===================================== */
+.dados-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dado-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dado-icone {
+  color: var(--cor-azul-claro);
+  font-size: 1.5rem;
+}
+
+.dado-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--texto-cinza); /* Marrom Escuro */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dado-valor {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--texto-escuro);
+  margin-top: 2px;
+}
+
+.loading-texto {
+  color: var(--texto-cinza);
+  font-style: italic;
+}
+
+/* =====================================
+   FORMULÁRIO DE SENHA
+===================================== */
+.senha-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group-perfil label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--texto-escuro);
+}
+
+.input-group-perfil input {
+  padding: 12px 15px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.input-group-perfil input:focus {
+  border-color: var(--cor-verde); /* Foco no Azul Ardósia */
+}
+
+.btn-salvar-senha {
+  background-color: var(--cor-vermelho); /* Bordô */
+  color: var(--bg-site);
+  border: none;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.btn-salvar-senha:hover {
+  background-color: var(--cor-amarelo-escuro); /* Ferrugem no hover */
+}
+
+.btn-salvar-senha:active {
+  transform: scale(0.98);
+}
+
+/* =====================================
+   MENSAGENS DE ALERTA
+===================================== */
+.mensagem-alerta {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mensagem-alerta.sucesso {
+  background-color: rgba(97, 111, 140, 0.1);
+  color: var(--cor-verde); /* Azul Ardósia */
+  border: 1px solid var(--cor-verde);
+}
+
+.mensagem-alerta.erro {
+  background-color: rgba(136, 52, 64, 0.1);
+  color: var(--cor-vermelho); /* Bordô */
+  border: 1px solid var(--cor-vermelho);
+}

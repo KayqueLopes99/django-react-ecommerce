@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import PerfilUsuario
+from rest_framework import serializers
+
 
 class PerfilUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +33,23 @@ class CadastroSerializer(serializers.ModelSerializer):
         PerfilUsuario.objects.create(user=user, **perfil_data)
         
         return user
+    
+
+# 1. Serializer para o Perfil (Trazendo só o necessário para a tela)
+class PerfilResumoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PerfilUsuario
+        fields = ['idade', 'cpf', 'cidade', 'estado'] # Não precisa mandar endereço completo agora
+
+class UsuarioPerfilSerializer(serializers.ModelSerializer):
+    # Conecta o perfil ao usuário. O 'source' usa o related_name padrão do OneToOneField
+    perfil = PerfilResumoSerializer(source='perfilusuario', read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'perfil']
+
+# 2. Serializer exclusivo para Troca de Senha
+class TrocarSenhaSerializer(serializers.Serializer):
+    senha_antiga = serializers.CharField(required=True)
+    senha_nova = serializers.CharField(required=True)

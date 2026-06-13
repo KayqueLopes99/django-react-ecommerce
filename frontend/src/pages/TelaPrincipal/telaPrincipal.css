@@ -17,8 +17,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 8%;
-  background-color: #ffffff;
-  border-bottom: 4px solid var(--cor-amarelo);
+  background-color: var(--bg-site); 
+  border-bottom: 4px solid var(--cor-amarelo); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
@@ -39,13 +39,13 @@
 }
 
 .logo h2 {
-  color: var(--texto-escuro);
+  color: var(--texto-escuro); 
   font-size: 1.8rem;
   font-weight: 800;
 }
 
 .logo span {
-  color: var(--cor-vermelho);
+  color: var(--cor-vermelho); 
 }
 
 .menu {
@@ -62,11 +62,11 @@
 }
 
 .menu a:hover {
-  color: var(--cor-vermelho);
+  color: var(--cor-vermelho); 
 }
 
 /* =====================================
-   ÁREA DO USUÁRIO (Novo bloco)
+   ÁREA DO USUÁRIO
 ===================================== */
 .acoes-usuario {
   display: flex;
@@ -87,7 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: var(--bg-quadros); 
   color: var(--texto-escuro);
   border: none;
   padding: 10px;
@@ -98,17 +98,17 @@
 }
 
 .btn-perfil:hover {
-  background-color: var(--cor-verde);
-  color: #ffffff;
+  background-color: var(--cor-verde); 
+  color: var(--bg-site);
   transform: scale(1.05);
 }
 
-/* NOVO: ESTILO DO BOTÃO DE LOGOUT */
+/* BOTÃO DE LOGOUT */
 .btn-logout {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: var(--bg-quadros); 
   color: var(--texto-escuro);
   border: none;
   padding: 10px;
@@ -118,14 +118,14 @@
 }
 
 .btn-logout:hover {
-  background-color: var(--cor-vermelho); /* Fica vermelho pra indicar "sair" */
-  color: #ffffff;
+  background-color: var(--cor-vermelho); 
+  color: var(--bg-site);
   transform: scale(1.05);
 }
 
 .carrinho-btn {
-  background-color: var(--cor-azul-claro);
-  color: #ffffff;
+  background-color: var(--cor-azul-claro); 
+  color: var(--bg-site);
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -139,11 +139,12 @@
 }
 
 .carrinho-btn:hover {
-  background-color: #4a9fae;
+  background-color: var(--cor-verde); 
 }
 
 .badge-contador {
-  background-color: var(--cor-vermelho);
+  background-color: var(--cor-vermelho); 
+  color: var(--bg-site);
   padding: 2px 8px;
   border-radius: 50%;
   font-size: 0.85rem;
@@ -154,7 +155,7 @@
    BANNER HERO
 ===================================== */
 .hero {
-  background-color: var(--cor-amarelo);
+  background-color: var(--cor-amarelo); 
   padding: 80px 8%;
   display: flex;
   align-items: center;
@@ -165,8 +166,8 @@
 }
 
 .tag-lancamento {
-  background-color: var(--cor-rosa);
-  color: white;
+  background-color: var(--cor-rosa); 
+  color: var(--bg-site);
   padding: 6px 14px;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -187,13 +188,13 @@
 
 .hero p {
   font-size: 1.1rem;
-  color: #444;
+  color: var(--texto-cinza); 
   margin-bottom: 30px;
 }
 
 .btn-destaque {
-  background-color: var(--cor-vermelho);
-  color: white;
+  background-color: var(--cor-vermelho); 
+  color: var(--bg-site);
   border: none;
   padding: 15px 35px;
   font-size: 1.1rem;
@@ -205,7 +206,7 @@
 }
 
 .btn-destaque:hover {
-  background-color: #a30505;
+  background-color: var(--cor-amarelo-escuro); 
   transform: translateY(-3px);
 }
 
@@ -234,29 +235,29 @@
   gap: 30px;
 }
 
+/* ATUALIZAÇÃO: FUNDO AZUL CLARO COM BORDA AZUL ESCURA */
 .card {
-  background-color: var(--bg-quadros);
+  background-color: var(--cor-azul-claro); 
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e0e0e0;
+  border: 2px solid var(--cor-verde); /* Borda adicionada no Azul Escuro */
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-  border-color: var(--cor-azul-claro);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
 }
 
 .badge-promocao {
   position: absolute;
   top: 15px;
   right: 15px;
-  background-color: var(--cor-amarelo-escuro);
-  color: white;
+  background-color: var(--cor-amarelo-escuro); 
+  color: var(--bg-site);
   padding: 4px 10px;
   border-radius: 4px;
   font-weight: 800;
@@ -265,16 +266,16 @@
 }
 
 .badge-promocao.rosa {
-  background-color: var(--cor-rosa);
+  background-color: var(--cor-rosa); 
 }
 
 .img-placeholder {
   height: 200px;
-  background-color: #e8e8e8;
+  background-color: var(--bg-site); 
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b0b0b0; 
+  color: var(--texto-cinza); 
 }
 
 .card-info {
@@ -299,12 +300,12 @@
 
 .preco-antigo {
   text-decoration: line-through;
-  color: var(--texto-cinza);
+  color: var(--texto-cinza); 
   font-size: 0.85rem;
 }
 
 .preco-atual {
-  color: var(--cor-vermelho);
+  color: var(--cor-vermelho); 
   font-size: 1.4rem;
   font-weight: 800;
 }
@@ -313,8 +314,8 @@
    BOTÃO DE AÇÃO
 ===================================== */
 .btn-comprar {
-  background-color: var(--cor-verde);
-  color: white;
+  background-color: var(--cor-verde); 
+  color: var(--bg-site);
   border: none;
   padding: 12px;
   border-radius: 6px;
@@ -327,15 +328,15 @@
 }
 
 .btn-comprar:hover {
-  background-color: var(--cor-verde-escuro);
+  background-color: var(--cor-verde-escuro); 
 }
 
 /* =====================================
    RODAPÉ
 ===================================== */
 .footer {
-  background-color: var(--cor-azul-claro);
-  color: white;
+  background-color: var(--cor-verde); 
+  color: var(--bg-site); 
   padding: 30px 8%;
   text-align: center;
   margin-top: 40px;
@@ -343,5 +344,164 @@
 
 .footer-content h2 {
   margin-bottom: 10px;
+  font-weight: 800;
+}
+
+/* =====================================
+   BARRA DE PESQUISA
+===================================== */
+.busca-container {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 30px;
+}
+
+.busca-form {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  border: 2px solid var(--cor-verde);
+  overflow: hidden;
+}
+
+.busca-input {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  color: var(--texto-escuro);
+}
+
+.busca-btn {
+  background-color: var(--cor-verde);
+  color: var(--bg-site);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.busca-btn:hover {
+  background-color: var(--cor-verde-escuro);
+}
+
+/* =====================================
+   NOVO: LAYOUT SIDEBAR + VITRINE
+===================================== */
+.conteudo-layout {
+  display: flex;
+  padding: 0 8%;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  background-color: #FFF;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #EAEAEA;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar h3 {
+  margin-bottom: 15px;
+  color: var(--texto-escuro);
+}
+
+.lista-categorias {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-categorias li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  color: var(--texto-cinza);
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.lista-categorias li:hover, .lista-categorias li.ativo {
+  background-color: var(--cor-verde);
+  color: #FFF;
+}
+
+/* Ajusta a vitrine para ocupar o resto do espaço */
+.vitrine-flex {
+  flex: 1;
+}
+
+/* =====================================
+   DROPDOWN DE SUGESTÕES (AUTOCOMPLETE)
+===================================== */
+.busca-container {
+  position: relative; /* Para segurar o dropdown no lugar certo */
+}
+
+.sugestoes-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  z-index: 200;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.sugestoes-dropdown li {
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #F5F5F5;
+  transition: background-color 0.2s;
+}
+
+.sugestoes-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.sugestoes-dropdown li:hover {
+  background-color: #F8F9FA;
+}
+
+.sugestao-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background-color: #FFF;
+  border-radius: 4px;
+  border: 1px solid #EEE;
+}
+
+.sugestao-info h4 {
+  font-size: 0.9rem;
+  color: var(--texto-escuro);
+  margin-bottom: 3px;
+}
+
+.sugestao-info span {
+  font-size: 0.85rem;
+  color: var(--cor-verde);
   font-weight: 800;
 }

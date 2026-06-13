@@ -9,15 +9,23 @@ class Pedido(models.Model):
         ('P', 'Pendente'),
         ('E', 'Enviado'),
         ('F', 'Finalizado'),
+        ('X', 'Cancelado'), 
+    ]
+
+    PAGAMENTO_CHOICES = [
+        ('PIX', 'Pix'),
+        ('CC', 'Cartão de Crédito'),
+        ('BOL', 'Boleto Bancário'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total = models.FloatField()
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='C')
+    metodo_pagamento = models.CharField(max_length=3, choices=PAGAMENTO_CHOICES, default='PIX') # NOVO CAMPO
+    criado_em = models.DateTimeField(auto_now_add=True, null=True) # NOVO: Para sabermos a data da compra
 
     def __str__(self):
-        return f'Pedido N.{self.pk} '
-    
+        return f'Pedido N.{self.pk} - {self.user.username}'
     
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)

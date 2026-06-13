@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import TelaPrincipal from './pages/TelaPrincipal/telaPrincipal';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
+import Perfil from './pages/Perfil/Perfil';
+import ProdutoDetalhe from './pages/ProdutoDetalhe/ProdutoDetalhe';
 
 function App() {
   // O SEGURANÇA: Verifica se o cliente tem o "crachá" na memória do navegador
@@ -29,6 +31,16 @@ function App() {
         {/* ROTAS LIVRES */}
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route 
+          path="/perfil" 
+          element={usuarioLogado ? <Perfil /> : <Navigate to="/login" />} 
+        />
+
+        {/* ROTA DE DETALHE DO PRODUTO: Protegida também, porque só faz sentido acessar se estiver logado */}
+        <Route 
+          path="/produto/:slug" 
+          element={usuarioLogado ? <ProdutoDetalhe /> : <Navigate to="/login" />} 
+        />
 
       </Routes>
     </Router>
