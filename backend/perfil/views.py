@@ -15,7 +15,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CadastroView(APIView):
-    # Liberta a rota para visitantes e desliga a exigência de Token/CSRF
     permission_classes = [AllowAny]
     authentication_classes = []
 
@@ -32,27 +31,23 @@ class CadastroView(APIView):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
-    # Liberta a rota para visitantes e desliga a exigência de Token/CSRF
     permission_classes = [AllowAny]
     authentication_classes = []
 
     def post(self, request, *args, **kwargs):
-        # O React está a enviar o e-mail dentro da variável 'username'
         email_digitado = request.data.get('username')
         password = request.data.get('password')
         
-        # 1. O TRUQUE: Tentamos achar o utilizador no banco pelo e-mail
         try:
             user_obj = User.objects.get(email=email_digitado)
-            username_real = user_obj.username # Achamos o username verdadeiro!
+            username_real = user_obj.username 
         except User.DoesNotExist:
-            username_real = None # Se não achar o e-mail, a autenticação vai falhar abaixo
+            username_real = None 
         
-        # 2. Agora usamos o username_real para o Django validar a senha encriptada
         user = authenticate(request, username=username_real, password=password)
         
         if user is not None:
-            login(request, user) # Cria a sessão
+            login(request, user) 
             return Response(
                 {"mensagem": "Login realizado com sucesso!", "username": user.username}, 
                 status=status.HTTP_200_OK
@@ -73,17 +68,14 @@ class LogoutView(APIView):
         
 
 
-# 1. View para ler os dados do usuário logado
 class DadosPerfilView(APIView):
-    permission_classes = [IsAuthenticated] # O Segurança: Só passa se tiver logado
+    permission_classes = [IsAuthenticated] 
 
     def get(self, request):
-        # O 'request.user' já sabe quem é o usuário graças ao token/sessão do login
         serializer = UsuarioPerfilSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# 2. View para trocar a senha
 class TrocarSenhaView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -95,14 +87,12 @@ class TrocarSenhaView(APIView):
             senha_antiga = serializer.validated_data['senha_antiga']
             senha_nova = serializer.validated_data['senha_nova']
 
-            # Verifica se a senha antiga que ele digitou confere com a do banco
             if not user.check_password(senha_antiga):
                 return Response(
                     {"erro": "A senha antiga está incorreta."}, 
                     status=status.HTTP_400_BAD_REQUEST
                 )
             
-            # Se passou, criptografa a nova senha e salva!
             user.set_password(senha_nova)
             user.save()
             

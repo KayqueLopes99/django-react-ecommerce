@@ -577,3 +577,107 @@
         grid-template-columns: 1fr;
     }
 }
+
+.carrinho-container {
+    font-family: 'Inter', sans-serif;
+    background: #F8F9FA;
+    min-height: 100vh;
+}
+
+.navbar-simples {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #FFF;
+    border-bottom: 2px solid #EAEAEA;
+}
+
+.carrinho-main {
+    padding: 40px 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carrinho-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.item-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.resumo-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.btn-finalizar {
+    width: 100%;
+    background: var(--cor-verde);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.btn-finalizar:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.toast-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    z-index: 1000;
+}
+
+.toast-message.sucesso {
+    background-color: var(--cor-verde);
+}
+
+.toast-message.erro {
+    background-color: #dc3545;
+}
+
+.frete-opcao {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.frete-opcao.ativo {
+    border-color: var(--cor-verde);
+    background: #f0fff0;
+}
+
+@media (max-width: 768px) {
+    .carrinho-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checkout-view-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.endereco-fragmentado { margin-top: 15px; }
+.endereco-fragmentado p { margin: 8px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+.endereco-fragmentado p span { font-weight: bold; color: #555; margin-right: 5px; }

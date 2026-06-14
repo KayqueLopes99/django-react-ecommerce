@@ -1,0 +1,180 @@
+.meus-pedidos-container {
+  font-family: 'Inter', sans-serif;
+  background-color: #F8F9FA;
+  min-height: 100vh;
+}
+
+.pedidos-main {
+  padding: 40px 8%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cabecalho-usuario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #EAEAEA;
+  padding-bottom: 15px;
+}
+
+.boas-vindas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  color: var(--texto-escuro, #333);
+  background: #FFF;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.loading-pedidos {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pedidos-vazio {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.lista-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.pedido-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.pedido-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  color: var(--texto-escuro, #333);
+}
+
+.data-pedido {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.status-criado, .status-pendente { background: #FFF3CD; color: #856404; }
+.status-aprovado, .status-finalizado { background: #D4EDDA; color: #155724; }
+.status-enviado { background: #CCE5FF; color: #004085; }
+.status-cancelado { background: #F8D7DA; color: #721C24; }
+
+.pedido-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.item-resumo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #F8F9FA;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.item-resumo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: #FFF;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.item-detalhes {
+  flex: 1;
+}
+
+.item-detalhes p {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.item-variacao {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.item-preco {
+  font-weight: bold;
+  color: var(--texto-escuro, #333);
+  font-size: 1.1rem;
+}
+
+.pedido-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.info-pagamento {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #555;
+}
+
+.btn-cancelar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid #DC3545;
+  color: #DC3545;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-cancelar:hover {
+  background: #DC3545;
+  color: #FFF;
+}
+
+.total-pedido {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.total-pedido strong {
+  color: var(--cor-verde, #28A745);
+}

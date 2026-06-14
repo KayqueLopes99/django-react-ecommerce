@@ -1,6 +1,3 @@
-/* =====================================
-   FUNDO DA TELA (Degradê)
-===================================== */
 .cadastro-container {
   min-height: 100vh;
   display: flex;
@@ -8,19 +5,17 @@
   align-items: center;
   background: linear-gradient(135deg, var(--cor-amarelo) 0%, var(--bg-site) 100%);
   font-family: 'Inter', sans-serif;
-  padding: 40px 20px; /* Espaço extra para não grudar no topo da tela */
+  padding: 40px 20px; 
 }
 
-/* =====================================
-   CARTÃO PRETO (Mais largo para o Grid)
-===================================== */
+
 .cadastro-card {
   background-color: #1a1a1a;
   padding: 60px 40px 40px;
   border-radius: 8px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   width: 100%;
-  max-width: 650px; /* Mais largo que o login */
+  max-width: 650px; 
   position: relative;
 }
 
@@ -32,7 +27,6 @@
   letter-spacing: 1px;
 }
 
-/* Avatar flutuante igual ao Login */
 .avatar-circle {
   background-color: var(--cor-verde);
   width: 90px;
@@ -48,9 +42,7 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* =====================================
-   FORMULÁRIO E GRID
-===================================== */
+
 .cadastro-form {
   display: flex;
   flex-direction: column;
@@ -67,14 +59,12 @@
   letter-spacing: 1px;
 }
 
-/* Coloca os inputs lado a lado na mesma linha */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-/* Se a tela for de celular, volta a ficar um embaixo do outro */
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr;
@@ -96,9 +86,7 @@
   color: #a0a0a0;
 }
 
-/* =====================================
-   ERROS E BOTÕES
-===================================== */
+
 .mensagem-erro-cadastro {
   background-color: rgba(192, 6, 6, 0.2);
   color: #ff6b6b;
@@ -142,11 +130,7 @@
   font-weight: bold;
 }
 
-/* ... [Mantenha todo o seu CSS anterior aqui] ... */
 
-/* =====================================
-   OLHINHO DA SENHA (NOVO)
-===================================== */
 .senha-group {
   position: relative;
   display: flex;
@@ -156,12 +140,12 @@
 
 .senha-group input {
   width: 100%;
-  padding-right: 40px; /* Dá um espaço extra à direita para o texto não ficar embaixo do ícone */
+  padding-right: 40px; 
 }
 
 .btn-olhinho-cadastro {
   position: absolute;
-  right: 12px; /* Posiciona o botão dentro do input */
+  right: 12px; 
   background: none;
   border: none;
   color: #666666;

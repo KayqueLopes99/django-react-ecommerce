@@ -1,6 +1,3 @@
-/* =====================================
-   FUNDO DA TELA (Degradê Amarelo/Bege)
-===================================== */
 .login-container {
   min-height: 100vh;
   display: flex;
@@ -10,9 +7,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* =====================================
-   CARTÃO PRETO
-===================================== */
+
 .login-card {
   background-color: #1a1a1a; 
   padding: 60px 40px 40px; 
@@ -23,9 +18,7 @@
   position: relative;
 }
 
-/* =====================================
-   AVATAR VERDE (O círculo que sai do card)
-===================================== */
+
 .avatar-circle {
   background-color: var(--cor-verde);
   width: 90px;
@@ -41,9 +34,7 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* =====================================
-   FORMULÁRIO E INPUTS
-===================================== */
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -91,9 +82,7 @@
   color: #a0a0a0;
 }
 
-/* =====================================
-   BOTÃO DO OLHINHO (Toggle Senha)
-===================================== */
+
 .btn-olhinho {
   background: none;
   border: none;
@@ -110,12 +99,10 @@
   color: var(--cor-verde);
 }
 
-/* =====================================
-   OPÇÕES (Lembre de mim)
-===================================== */
+
 .login-options {
   display: flex;
-  justify-content: flex-start; /* Ajustado para manter o checkbox à esquerda */
+  justify-content: flex-start; 
   align-items: center;
   font-size: 0.85rem;
   color: #bbbbbb;
@@ -128,9 +115,6 @@
   cursor: pointer;
 }
 
-/* =====================================
-   BOTÃO DE LOGIN VERDE
-===================================== */
 .login-btn {
   background-color: var(--cor-verde);
   color: #ffffff;
@@ -154,9 +138,7 @@
   transform: scale(0.98);
 }
 
-/* =====================================
-   LINK PARA CADASTRO
-===================================== */
+
 .cadastro-link {
   text-align: center;
   margin-top: 10px;
@@ -176,7 +158,6 @@
   color: var(--cor-verde-escuro);
 }
 
-/* ... [Resto do seu CSS lá para cima] ... */
 
 .mensagem-erro {
   color: var(--cor-vermelho);
@@ -186,9 +167,6 @@
   margin-bottom: -10px;
 }
 
-/* =====================================
-   MENSAGEM DE SUCESSO (NOVO)
-===================================== */
 .mensagem-sucesso {
   color: var(--cor-verde);
   text-align: center;
@@ -197,4 +175,3 @@
   margin-bottom: -10px;
 }
 
-/* ... [Resto do seu CSS lá para baixo] ... */

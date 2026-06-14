@@ -1,9 +1,6 @@
-/* =====================================
-   FUNDO E LAYOUT GERAL
-===================================== */
 .perfil-container {
   min-height: 100vh;
-  background-color: var(--bg-site); /* Off-White da paleta */
+  background-color: var(--bg-site); 
   font-family: 'Inter', sans-serif;
   padding: 40px 8%;
   color: var(--texto-escuro);
@@ -26,7 +23,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--cor-verde); /* Azul Ardósia */
+  color: var(--cor-verde); 
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -35,12 +32,10 @@
 }
 
 .btn-voltar:hover {
-  color: var(--cor-vermelho); /* Hover Bordô */
+  color: var(--cor-vermelho); 
 }
 
-/* =====================================
-   GRID DE CARDS (Layout Dividido)
-===================================== */
+
 .perfil-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -54,11 +49,9 @@
   }
 }
 
-/* =====================================
-   ESTILO DOS CARDS
-===================================== */
+
 .perfil-card {
-  background-color: var(--bg-quadros); /* Cinza Claro */
+  background-color: var(--bg-quadros); 
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -78,9 +71,6 @@
   font-weight: 800;
 }
 
-/* =====================================
-   LISTA DE DADOS
-===================================== */
 .dados-lista {
   display: flex;
   flex-direction: column;
@@ -101,7 +91,7 @@
 .dado-label {
   display: block;
   font-size: 0.85rem;
-  color: var(--texto-cinza); /* Marrom Escuro */
+  color: var(--texto-cinza); 
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -119,9 +109,6 @@
   font-style: italic;
 }
 
-/* =====================================
-   FORMULÁRIO DE SENHA
-===================================== */
 .senha-form {
   display: flex;
   flex-direction: column;
@@ -151,11 +138,11 @@
 }
 
 .input-group-perfil input:focus {
-  border-color: var(--cor-verde); /* Foco no Azul Ardósia */
+  border-color: var(--cor-verde); 
 }
 
 .btn-salvar-senha {
-  background-color: var(--cor-vermelho); /* Bordô */
+  background-color: var(--cor-vermelho); 
   color: var(--bg-site);
   border: none;
   padding: 14px;
@@ -168,16 +155,13 @@
 }
 
 .btn-salvar-senha:hover {
-  background-color: var(--cor-amarelo-escuro); /* Ferrugem no hover */
+  background-color: var(--cor-amarelo-escuro); 
 }
 
 .btn-salvar-senha:active {
   transform: scale(0.98);
 }
 
-/* =====================================
-   MENSAGENS DE ALERTA
-===================================== */
 .mensagem-alerta {
   padding: 12px;
   border-radius: 6px;
@@ -189,12 +173,12 @@
 
 .mensagem-alerta.sucesso {
   background-color: rgba(97, 111, 140, 0.1);
-  color: var(--cor-verde); /* Azul Ardósia */
+  color: var(--cor-verde);
   border: 1px solid var(--cor-verde);
 }
 
 .mensagem-alerta.erro {
   background-color: rgba(136, 52, 64, 0.1);
-  color: var(--cor-vermelho); /* Bordô */
+  color: var(--cor-vermelho); 
   border: 1px solid var(--cor-vermelho);
 }

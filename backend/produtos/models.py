@@ -4,7 +4,6 @@ from PIL import Image
 from django.db import models
 from django.utils.text import slugify
 
-# 1. NOVA CLASSE: CATEGORIA (Deve vir antes de Produto)
 class Categoria(models.Model):
     nome = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, blank=True, null=True)
@@ -19,8 +18,7 @@ class Categoria(models.Model):
 
 
 class Produto(models.Model):
-    # 2. NOVO CAMPO: RELACIONAMENTO COM CATEGORIA
-    # O on_delete=models.DO_NOTHING (ou CASCADE/SET_NULL) define o que acontece com o produto se a categoria for apagada
+
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, null=True, blank=True)
     
     nome = models.CharField(max_length=255)

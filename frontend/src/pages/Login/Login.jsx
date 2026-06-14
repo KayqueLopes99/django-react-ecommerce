@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [erro, setErro] = useState('');
-  const [sucesso, setSucesso] = useState(''); // <-- Novo estado para a mensagem de sucesso
+  const [sucesso, setSucesso] = useState(''); 
   
   const [mostrarSenha, setMostrarSenha] = useState(false);
   
@@ -16,7 +16,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setErro('');
-    setSucesso(''); // Limpa a mensagem de sucesso se o usuário tentar logar de novo
+    setSucesso(''); 
 
     try {
       const response = await fetch('http://localhost:8000/api/login/', {
@@ -34,10 +34,8 @@ const Login = () => {
 
         localStorage.setItem('nomeUsuario', data.username);
         
-        // 1. Mostra a mensagem de sucesso na tela
         setSucesso("Login realizado com sucesso! Redirecionando...");
         
-        // 2. Aguarda 2 segundos (2000 ms) e depois redireciona para a home
         setTimeout(() => {
           navigate('/home');
         }, 2000);
@@ -58,7 +56,6 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleLogin} className="login-form">
-          {/* Exibe o erro se houver, ou o sucesso se houver */}
           {erro && <p className="mensagem-erro">{erro}</p>}
           {sucesso && <p className="mensagem-sucesso">{sucesso}</p>}
 

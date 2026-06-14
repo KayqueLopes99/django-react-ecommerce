@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { FiUserPlus, FiEye, FiEyeOff } from 'react-icons/fi'; // <-- Ícones adicionados aqui
+import { FiUserPlus, FiEye, FiEyeOff } from 'react-icons/fi'; 
 import './Cadastro.css';
 
 const Cadastro = () => {
   const navigate = useNavigate();
   const [erro, setErro] = useState('');
   
-  // Estado para controlar a visibilidade da senha
   const [mostrarSenha, setMostrarSenha] = useState(false);
   
-  // Um único estado gerenciando todos os campos do formulário
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -115,7 +113,6 @@ const Cadastro = () => {
                 {mostrarSenha ? <FiEyeOff size={18} /> : <FiEye size={18} />}
               </button>
             </div>
-            {/* ------------------------------------ */}
 
           </div>
 

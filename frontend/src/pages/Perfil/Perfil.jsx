@@ -10,7 +10,6 @@ const Perfil = () => {
   const [mensagem, setMensagem] = useState({ tipo: '', texto: '' });
 
 
-  // Função para pescar o selo de segurança (CSRF Token) do navegador
   const getCookie = (name) => {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -26,14 +25,13 @@ const Perfil = () => {
     return cookieValue;
   };
 
-  // Busca os dados do usuário assim que a tela carrega
   useEffect(() => {
     const buscarPerfil = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/meu-perfil/', {
           method: 'GET',
-          // Inclui os cookies de sessão para o Django saber quem está logado
-          credentials: 'include', // Mude para 'include' se estiver usando cookies de sessão no navegador
+        
+          credentials: 'include', 
           headers: {
             'Content-Type': 'application/json',
           }
@@ -53,7 +51,6 @@ const Perfil = () => {
     buscarPerfil();
   }, []);
 
-  // Função para enviar a nova senha
   const handleTrocarSenha = async (e) => {
     e.preventDefault();
     setMensagem({ tipo: '', texto: '' });
@@ -64,7 +61,7 @@ const Perfil = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': getCookie('csrftoken') // <--- A MÁGICA: Enviando o selo de segurança!
+          'X-CSRFToken': getCookie('csrftoken') 
         },
         body: JSON.stringify({
           senha_antiga: senhaAntiga,
@@ -98,7 +95,6 @@ const Perfil = () => {
 
       <div className="perfil-layout">
         
-        {/* COLUNA ESQUERDA: DADOS DO USUÁRIO */}
         <section className="perfil-card dados-card">
           <div className="card-cabecalho">
             <FiUser size={24} color="var(--cor-verde)" />
@@ -146,7 +142,6 @@ const Perfil = () => {
           )}
         </section>
 
-        {/* COLUNA DIREITA: TROCAR SENHA */}
         <section className="perfil-card senha-card">
           <div className="card-cabecalho">
             <FiLock size={24} color="var(--cor-vermelho)" />

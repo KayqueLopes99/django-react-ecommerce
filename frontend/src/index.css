@@ -2,42 +2,34 @@
    VARIÁVEIS GLOBAIS (PALETA DE CORES)
 ========================================= */
 :root {
-  /* Bases e Fundos */
-  --bg-site: #FBFAF9;         /* Branco / Off-White */
-  --bg-quadros: #CBD2D6;      /* Cinza Claro */
+  --bg-site: #FBFAF9;         
+  --bg-quadros: #CBD2D6;      
   
-  /* Tons Frios */
-  --cor-azul-claro: #75A3BF;  /* Azul Claro */
+
+  --cor-azul-claro: #75A3BF;  
   
-  /* Tons Terrosos (Mapeados nos antigos amarelos) */
-  --cor-amarelo: #F2C8A2;     /* Pêssego / Bege */
-  --cor-amarelo-escuro: #A65D33; /* Ferrugem / Caramelo */
+  --cor-amarelo: #F2C8A2;    
+  --cor-amarelo-escuro: #A65D33; 
   
-  /* Botões Principais (Mapeados nos antigos verdes) */
-  --cor-verde: #616F8C;       /* Azul Ardósia Escuro */
-  --cor-verde-escuro: #2E312F;/* Preto Carvão (Para o efeito de Hover) */
+  --cor-verde: #616F8C;      
+  --cor-verde-escuro: #2E312F;
   
-  /* Destaques e Alertas */
-  --cor-rosa: #D9626B;        /* Rosa / Salmão */
-  --cor-vermelho: #883440;    /* Bordô / Vinho */
+
+  --cor-rosa: #D9626B;       
+  --cor-vermelho: #883440;    
   
-  /* Textos */
-  --texto-escuro: #2E312F;    /* Preto Carvão */
-  --texto-cinza: #654F40;     /* Marrom Escuro */
+  --texto-escuro: #2E312F;    
+  --texto-cinza: #654F40;     
 }
 
-/* =========================================
-   RESET GLOBAL DE MARGENS E ESPAÇAMENTOS
-========================================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================================
-   CONFIGURAÇÕES DO CORPO DO SITE
-========================================= */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-site);

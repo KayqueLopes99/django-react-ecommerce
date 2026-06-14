@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiShoppingCart, FiImage, FiUser, FiLogOut, FiSearch } from 'react-icons/fi';
+import { FiShoppingCart, FiImage, FiUser, FiLogOut, FiSearch, FiBox} from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import './TelaPrincipal.css';
 import logoImg from '../../assets/logo.png';
@@ -10,11 +10,10 @@ const TelaPrincipal = () => {
 
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
-  
+
   const [termoBusca, setTermoBusca] = useState('');
   const [tituloSecao, setTituloSecao] = useState('Destaques da Semana');
 
-  // NOVOS ESTADOS PARA CATEGORIAS E SUGESTÕES
   const [categorias, setCategorias] = useState([]);
   const [categoriaAtiva, setCategoriaAtiva] = useState('');
   const [sugestoes, setSugestoes] = useState([]);
@@ -22,7 +21,6 @@ const TelaPrincipal = () => {
 
   const [qtdCarrinho, setQtdCarrinho] = useState(0);
 
-  // Busca as Categorias assim que a tela abre
   useEffect(() => {
     fetch('http://localhost:8000/api/categorias/')
       .then(res => res.json())
@@ -31,12 +29,10 @@ const TelaPrincipal = () => {
   }, []);
 
   useEffect(() => {
-  const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
-  // Soma a quantidade de todos os itens
-  const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
-  setQtdCarrinho(totalItens);
-}, []); // <- Em ProdutoDetalhe, você pode adicionar o state 'mensagemSucesso' neste array para o número atualizar assim que ele adicionar um item novo!
-
+    const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+    setQtdCarrinho(totalItens);
+  }, []); 
   const buscarDados = async (url, titulo) => {
     setCarregando(true);
     try {
@@ -44,7 +40,7 @@ const TelaPrincipal = () => {
       if (response.ok) {
         const data = await response.json();
         setProdutos(data.results ? data.results : data);
-        setTituloSecao(titulo); 
+        setTituloSecao(titulo);
       }
     } catch (error) {
       console.error("Erro de conexão:", error);
@@ -57,11 +53,10 @@ const TelaPrincipal = () => {
     buscarDados('http://localhost:8000/api/produtos/', 'Destaques da Semana');
   }, []);
 
-  // PESQUISA AO APERTAR ENTER OU CLICAR NA LUPA
   const handlePesquisa = (e) => {
     e.preventDefault();
-    setMostrarSugestoes(false); // Esconde as sugestões ao pesquisar
-    setCategoriaAtiva(''); // Limpa a categoria ativa
+    setMostrarSugestoes(false); 
+    setCategoriaAtiva(''); 
 
     if (termoBusca.trim() === '') {
       buscarDados('http://localhost:8000/api/produtos/', 'Destaques da Semana');
@@ -70,7 +65,6 @@ const TelaPrincipal = () => {
     }
   };
 
-  // BUSCA SILENCIOSA ENQUANTO DIGITA (AUTOCOMPLETE)
   const handleMudancaBusca = async (e) => {
     const valor = e.target.value;
     setTermoBusca(valor);
@@ -88,7 +82,7 @@ const TelaPrincipal = () => {
       if (response.ok) {
         const data = await response.json();
         const resultados = data.results ? data.results : data;
-        setSugestoes(resultados.slice(0, 5)); // Pega só as 5 primeiras para não encher a tela
+        setSugestoes(resultados.slice(0, 5)); 
         setMostrarSugestoes(true);
       }
     } catch (error) {
@@ -96,7 +90,6 @@ const TelaPrincipal = () => {
     }
   };
 
-  // QUANDO CLICA EM UMA SUGESTÃO DA LISTA
   const handleClicarSugestao = (produto) => {
     setTermoBusca(produto.nome);
     setMostrarSugestoes(false);
@@ -104,10 +97,9 @@ const TelaPrincipal = () => {
     buscarDados(`http://localhost:8000/api/produtos/?search=${produto.nome}`, `Resultados para "${produto.nome}"`);
   };
 
-  // NOVO: QUANDO CLICA EM UMA CATEGORIA NA SIDEBAR
   const handleFiltrarCategoria = (slug, nome) => {
     setCategoriaAtiva(slug);
-    setTermoBusca(''); // Limpa a busca por texto
+    setTermoBusca(''); 
     if (!slug) {
       buscarDados('http://localhost:8000/api/produtos/', 'Destaques da Semana');
     } else {
@@ -133,14 +125,14 @@ const TelaPrincipal = () => {
           <img src={logoImg} alt="Logo Kayque Store" className="logo-img" />
           <h2>Blasto<span>Store</span></h2>
         </div>
-        
+
         <div className="busca-container" onMouseLeave={() => setMostrarSugestoes(false)}>
-         <form onSubmit={handlePesquisa} className="busca-form">
-            <input 
-              type="text" 
-              placeholder="Buscar produtos..." 
+          <form onSubmit={handlePesquisa} className="busca-form">
+            <input
+              type="text"
+              placeholder="Buscar produtos..."
               value={termoBusca}
-              onChange={handleMudancaBusca} 
+              onChange={handleMudancaBusca}
               onFocus={() => termoBusca.trim() !== '' && setMostrarSugestoes(true)}
               className="busca-input"
             />
@@ -149,7 +141,6 @@ const TelaPrincipal = () => {
             </button>
           </form>
 
-          {/* NOVO: DROPDOWN DE SUGESTÕES FLUTUANTE */}
           {mostrarSugestoes && sugestoes.length > 0 && (
             <ul className="sugestoes-dropdown">
               {sugestoes.map((sugestao) => (
@@ -157,8 +148,8 @@ const TelaPrincipal = () => {
                   {sugestao.imagem ? (
                     <img src={sugestao.imagem} alt={sugestao.nome} className="sugestao-img" />
                   ) : (
-                    <div className="sugestao-img" style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                      <FiImage color="#CCC"/>
+                    <div className="sugestao-img" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <FiImage color="#CCC" />
                     </div>
                   )}
                   <div className="sugestao-info">
@@ -170,11 +161,16 @@ const TelaPrincipal = () => {
             </ul>
           )}
         </div>
-        
+
         <nav className="menu">
           <a href="#" onClick={(e) => { e.preventDefault(); handleFiltrarCategoria('', ''); }}>Início</a>
         </nav>
-        
+
+        <Link to="/meus-pedidos" className="menu-link" style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#333', textDecoration: 'none', fontWeight: 'bold' }}>
+          <FiBox size={20} />
+          Meus Pedidos
+        </Link>
+
         <div className="acoes-usuario">
           <span className="saudacao">Olá <strong>{nomeUsuario}</strong>!</span>
           <Link to="/perfil" className="btn-perfil" title="Meu Perfil">
@@ -184,13 +180,12 @@ const TelaPrincipal = () => {
             <FiLogOut size={20} />
           </button>
           <Link to="/carrinho" className="carrinho-btn" style={{ textDecoration: 'none' }}>
-            <FiShoppingCart size={20} /> 
+            <FiShoppingCart size={20} />
             {qtdCarrinho > 0 && <span className="badge-contador">{qtdCarrinho}</span>}
           </Link>
         </div>
       </header>
 
-      {/* Banner Hero Fora do Layout Dividido */}
       <section className="hero">
         <div className="hero-content">
           <span className="tag-lancamento">Nova Coleção 2026</span>
@@ -200,22 +195,20 @@ const TelaPrincipal = () => {
         </div>
       </section>
 
-      {/* NOVO: DIVISÃO ENTRE SIDEBAR E VITRINE */}
       <div className="conteudo-layout">
-        
-        {/* SIDEBAR DE CATEGORIAS */}
+
         <aside className="sidebar">
           <h3>Categorias</h3>
           <ul className="lista-categorias">
-            <li 
-              className={categoriaAtiva === '' ? 'ativo' : ''} 
+            <li
+              className={categoriaAtiva === '' ? 'ativo' : ''}
               onClick={() => handleFiltrarCategoria('', '')}
             >
               Todos os Produtos
             </li>
             {categorias.map(cat => (
-              <li 
-                key={cat.id} 
+              <li
+                key={cat.id}
                 className={categoriaAtiva === cat.slug ? 'ativo' : ''}
                 onClick={() => handleFiltrarCategoria(cat.slug, cat.nome)}
               >
@@ -225,13 +218,12 @@ const TelaPrincipal = () => {
           </ul>
         </aside>
 
-        {/* VITRINE QUE JÁ EXISTIA */}
         <main className="vitrine-flex">
           <section className="vitrine" style={{ padding: '0' }}>
             <div className="cabecalho-secao">
               <h2 className="titulo-secao" style={{ textAlign: 'left' }}>{tituloSecao}</h2>
             </div>
-            
+
             <div className="grid-produtos">
               {carregando ? (
                 <p style={{ textAlign: 'center', width: '100%', gridColumn: '1 / -1', color: 'var(--texto-cinza)' }}>
@@ -246,9 +238,9 @@ const TelaPrincipal = () => {
 
                     <div className="img-placeholder" style={{ padding: 0, overflow: 'hidden', backgroundColor: '#FFFFFF' }}>
                       {produto.imagem ? (
-                        <img 
-                          src={produto.imagem} 
-                          alt={produto.nome} 
+                        <img
+                          src={produto.imagem}
+                          alt={produto.nome}
                           style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '15px' }}
                         />
                       ) : (

@@ -13,21 +13,15 @@ const ProdutoDetalhe = () => {
   const [variacaoSelecionada, setVariacaoSelecionada] = useState(null);
   const [quantidade, setQuantidade] = useState(1);
   
-
-  // NOVO: Estado para a notificação elegante
   const [mensagemSucesso, setMensagemSucesso] = useState('');
 
-  // ---------------- ADICIONE DAQUI PARA BAIXO ----------------
   const [qtdCarrinho, setQtdCarrinho] = useState(0);
 
-  // Esse useEffect vigia o 'mensagemSucesso'. Quando você adiciona um item, 
-  // a mensagem aparece e esse código roda instantaneamente, atualizando o ícone!
   useEffect(() => {
     const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
     const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
     setQtdCarrinho(totalItens);
   }, [mensagemSucesso]); 
-  // -----------------------------------------------------------
 
   useEffect(() => {
     const buscarDetalhes = async () => {
@@ -53,15 +47,12 @@ const ProdutoDetalhe = () => {
     buscarDetalhes();
   }, [slug, navigate]);
 
-  // NOVO: Reseta a quantidade para 1 toda vez que o usuário troca a cor/tamanho
   useEffect(() => {
     setQuantidade(1);
   }, [variacaoSelecionada]);
 
-  // NOVO: Descobre qual é o estoque máximo permitido
   const estoqueDisponivel = variacaoSelecionada ? variacaoSelecionada.estoque : 0;
 
-  // NOVO: Travas na quantidade
   const aumentarQtd = () => {
     if (quantidade < estoqueDisponivel) {
       setQuantidade(prev => prev + 1);
@@ -81,11 +72,9 @@ const ProdutoDetalhe = () => {
       (item) => item.produto_id === produto.id && item.variacao_id === variacaoSelecionada.id
     );
 
-    // Verificação dupla: O que ele quer adicionar + O que já tem no carrinho passa do estoque?
     const qtdJaNoCarrinho = indexExistente >= 0 ? carrinhoAberto[indexExistente].quantidade : 0;
     
     if (qtdJaNoCarrinho + quantidade > estoqueDisponivel) {
-      // Se passar, a gente avisa e cancela a ação
       alert(`Você já tem ${qtdJaNoCarrinho} deste item no carrinho. O estoque máximo é ${estoqueDisponivel}.`);
       return;
     }
@@ -96,9 +85,9 @@ const ProdutoDetalhe = () => {
       nome: produto.nome,
       variacao_nome: variacaoSelecionada.nome,
       imagem: produto.imagem,
-      preco_unitario: variacaoSelecionada.preco_promocional > 0 
-                        ? variacaoSelecionada.preco_promocional 
-                        : variacaoSelecionada.preco,
+      
+      preco_unitario: variacaoSelecionada.preco,
+      preco_promocional: variacaoSelecionada.preco_promocional || 0,
       quantidade: quantidade
     };
 
@@ -110,10 +99,8 @@ const ProdutoDetalhe = () => {
 
     localStorage.setItem('meuCarrinho', JSON.stringify(carrinhoAberto));
     
-    // NOVO: Chama o Toast de sucesso em vez do Alert feio
     setMensagemSucesso(`${quantidade}x ${produto.nome} adicionado!`);
     
-    // Esconde o Toast automaticamente depois de 3 segundos
     setTimeout(() => {
       setMensagemSucesso('');
     }, 3000);
@@ -131,7 +118,6 @@ const ProdutoDetalhe = () => {
 
   return (
     <div className="produto-detalhe-container">
-      {/* NOVO: Componente do Toast Flutuante */}
       {mensagemSucesso && (
         <div className="toast-sucesso">
           <FiCheckCircle size={24} />
@@ -144,7 +130,6 @@ const ProdutoDetalhe = () => {
           <FiArrowLeft size={20} /> Voltar para a Loja
         </Link>
         
-        {/* NOVO: Ícone do carrinho adicionado no canto superior direito da tela de detalhes! */}
         <Link to="/carrinho" style={{ position: 'relative', color: 'var(--texto-escuro)', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <FiShoppingCart size={26} />
           {qtdCarrinho > 0 && (
@@ -198,12 +183,10 @@ const ProdutoDetalhe = () => {
           )}
 
           <div className="area-compra-wrapper">
-            {/* NOVO: Mostra o limite do estoque visualmente */}
             <span className="estoque-label">Estoque disponível: <strong>{estoqueDisponivel}</strong></span>
             
             <div className="area-compra">
               <div className="controle-quantidade">
-                {/* Botões agora ficam desabilitados se passarem dos limites */}
                 <button onClick={diminuirQtd} className="btn-qtd" disabled={quantidade <= 1}>
                   <FiMinus />
                 </button>
@@ -213,7 +196,6 @@ const ProdutoDetalhe = () => {
                 </button>
               </div>
 
-              {/* Se o estoque for zero, bloqueia o botão de compra também */}
               <button 
                 className="btn-adicionar-carrinho" 
                 onClick={handleAdicionarAoCarrinho}

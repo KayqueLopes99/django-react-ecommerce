@@ -21,8 +21,8 @@ class Pedido(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total = models.FloatField()
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='C')
-    metodo_pagamento = models.CharField(max_length=3, choices=PAGAMENTO_CHOICES, default='PIX') # NOVO CAMPO
-    criado_em = models.DateTimeField(auto_now_add=True, null=True) # NOVO: Para sabermos a data da compra
+    metodo_pagamento = models.CharField(max_length=3, choices=PAGAMENTO_CHOICES, default='PIX') 
+    criado_em = models.DateTimeField(auto_now_add=True, null=True) 
 
     def __str__(self):
         return f'Pedido N.{self.pk} - {self.user.username}'

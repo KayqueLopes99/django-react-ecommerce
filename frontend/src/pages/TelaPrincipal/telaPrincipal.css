@@ -1,7 +1,5 @@
-/* IMPORTANDO A FONTE INTER DO GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-/* RESET ESPECÍFICO DO COMPONENTE */
 .tela-principal {
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
@@ -9,9 +7,7 @@
   flex-direction: column;
 }
 
-/* =====================================
-   CABEÇALHO
-===================================== */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -25,7 +21,6 @@
   z-index: 100;
 }
 
-/* ALINHAMENTO DO NOVO LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -65,9 +60,7 @@
   color: var(--cor-vermelho); 
 }
 
-/* =====================================
-   ÁREA DO USUÁRIO
-===================================== */
+
 .acoes-usuario {
   display: flex;
   align-items: center;
@@ -103,7 +96,6 @@
   transform: scale(1.05);
 }
 
-/* BOTÃO DE LOGOUT */
 .btn-logout {
   display: flex;
   align-items: center;
@@ -151,9 +143,7 @@
   font-weight: 800;
 }
 
-/* =====================================
-   BANNER HERO
-===================================== */
+
 .hero {
   background-color: var(--cor-amarelo); 
   padding: 80px 8%;
@@ -210,9 +200,7 @@
   transform: translateY(-3px);
 }
 
-/* =====================================
-   VITRINE E CARDS
-===================================== */
+
 .vitrine {
   padding: 60px 8%;
   flex: 1;
@@ -235,7 +223,6 @@
   gap: 30px;
 }
 
-/* ATUALIZAÇÃO: FUNDO AZUL CLARO COM BORDA AZUL ESCURA */
 .card {
   background-color: var(--cor-azul-claro); 
   border-radius: 12px;
@@ -244,7 +231,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--cor-verde); /* Borda adicionada no Azul Escuro */
+  border: 2px solid var(--cor-verde); 
 }
 
 .card:hover {
@@ -310,9 +297,7 @@
   font-weight: 800;
 }
 
-/* =====================================
-   BOTÃO DE AÇÃO
-===================================== */
+
 .btn-comprar {
   background-color: var(--cor-verde); 
   color: var(--bg-site);
@@ -331,9 +316,7 @@
   background-color: var(--cor-verde-escuro); 
 }
 
-/* =====================================
-   RODAPÉ
-===================================== */
+
 .footer {
   background-color: var(--cor-verde); 
   color: var(--bg-site); 
@@ -347,9 +330,7 @@
   font-weight: 800;
 }
 
-/* =====================================
-   BARRA DE PESQUISA
-===================================== */
+
 .busca-container {
   flex: 1;
   max-width: 400px;
@@ -391,9 +372,7 @@
   background-color: var(--cor-verde-escuro);
 }
 
-/* =====================================
-   NOVO: LAYOUT SIDEBAR + VITRINE
-===================================== */
+
 .conteudo-layout {
   display: flex;
   padding: 0 8%;
@@ -438,16 +417,13 @@
   color: #FFF;
 }
 
-/* Ajusta a vitrine para ocupar o resto do espaço */
 .vitrine-flex {
   flex: 1;
 }
 
-/* =====================================
-   DROPDOWN DE SUGESTÕES (AUTOCOMPLETE)
-===================================== */
+
 .busca-container {
-  position: relative; /* Para segurar o dropdown no lugar certo */
+  position: relative; 
 }
 
 .sugestoes-dropdown {
