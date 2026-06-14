@@ -5,6 +5,7 @@ import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
 import Perfil from './pages/Perfil/Perfil';
 import ProdutoDetalhe from './pages/ProdutoDetalhe/ProdutoDetalhe';
+import Carrinho from './pages/Carrinho/Carrinho';
 
 function App() {
   // O SEGURANÇA: Verifica se o cliente tem o "crachá" na memória do navegador
@@ -41,6 +42,8 @@ function App() {
           path="/produto/:slug" 
           element={usuarioLogado ? <ProdutoDetalhe /> : <Navigate to="/login" />} 
         />
+
+        <Route path="/carrinho" element={<Carrinho />} />
 
       </Routes>
     </Router>

@@ -20,6 +20,8 @@ const TelaPrincipal = () => {
   const [sugestoes, setSugestoes] = useState([]);
   const [mostrarSugestoes, setMostrarSugestoes] = useState(false);
 
+  const [qtdCarrinho, setQtdCarrinho] = useState(0);
+
   // Busca as Categorias assim que a tela abre
   useEffect(() => {
     fetch('http://localhost:8000/api/categorias/')
@@ -27,6 +29,13 @@ const TelaPrincipal = () => {
       .then(data => setCategorias(data))
       .catch(err => console.error("Erro ao buscar categorias:", err));
   }, []);
+
+  useEffect(() => {
+  const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+  // Soma a quantidade de todos os itens
+  const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+  setQtdCarrinho(totalItens);
+}, []); // <- Em ProdutoDetalhe, você pode adicionar o state 'mensagemSucesso' neste array para o número atualizar assim que ele adicionar um item novo!
 
   const buscarDados = async (url, titulo) => {
     setCarregando(true);
@@ -174,9 +183,10 @@ const TelaPrincipal = () => {
           <button onClick={handleLogout} className="btn-logout" title="Sair da Conta">
             <FiLogOut size={20} />
           </button>
-          <button className="carrinho-btn">
-            <FiShoppingCart size={20} /> <span className="badge-contador">0</span>
-          </button>
+          <Link to="/carrinho" className="carrinho-btn" style={{ textDecoration: 'none' }}>
+            <FiShoppingCart size={20} /> 
+            {qtdCarrinho > 0 && <span className="badge-contador">{qtdCarrinho}</span>}
+          </Link>
         </div>
       </header>
 

@@ -7,8 +7,18 @@ from .serializers import CadastroSerializer
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from .serializers import UsuarioPerfilSerializer, TrocarSenhaSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
+@method_decorator(csrf_exempt, name='dispatch')
 class CadastroView(APIView):
+    # Liberta a rota para visitantes e desliga a exigência de Token/CSRF
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
     def post(self, request):
         serializer = CadastroSerializer(data=request.data)
         if serializer.is_valid():
@@ -18,21 +28,27 @@ class CadastroView(APIView):
                 status=status.HTTP_201_CREATED
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
+@method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
-    def post(self, request):
-        # O React está enviando o e-mail dentro da variável 'username'
+    # Liberta a rota para visitantes e desliga a exigência de Token/CSRF
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def post(self, request, *args, **kwargs):
+        # O React está a enviar o e-mail dentro da variável 'username'
         email_digitado = request.data.get('username')
         password = request.data.get('password')
         
-        # 1. O TRUQUE: Tentamos achar o usuário no banco pelo e-mail
+        # 1. O TRUQUE: Tentamos achar o utilizador no banco pelo e-mail
         try:
             user_obj = User.objects.get(email=email_digitado)
             username_real = user_obj.username # Achamos o username verdadeiro!
         except User.DoesNotExist:
             username_real = None # Se não achar o e-mail, a autenticação vai falhar abaixo
         
-        # 2. Agora usamos o username_real para o Django validar a senha criptografada
+        # 2. Agora usamos o username_real para o Django validar a senha encriptada
         user = authenticate(request, username=username_real, password=password)
         
         if user is not None:

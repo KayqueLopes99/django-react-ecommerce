@@ -13,8 +13,21 @@ const ProdutoDetalhe = () => {
   const [variacaoSelecionada, setVariacaoSelecionada] = useState(null);
   const [quantidade, setQuantidade] = useState(1);
   
+
   // NOVO: Estado para a notificação elegante
   const [mensagemSucesso, setMensagemSucesso] = useState('');
+
+  // ---------------- ADICIONE DAQUI PARA BAIXO ----------------
+  const [qtdCarrinho, setQtdCarrinho] = useState(0);
+
+  // Esse useEffect vigia o 'mensagemSucesso'. Quando você adiciona um item, 
+  // a mensagem aparece e esse código roda instantaneamente, atualizando o ícone!
+  useEffect(() => {
+    const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+    const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+    setQtdCarrinho(totalItens);
+  }, [mensagemSucesso]); 
+  // -----------------------------------------------------------
 
   useEffect(() => {
     const buscarDetalhes = async () => {
@@ -126,9 +139,19 @@ const ProdutoDetalhe = () => {
         </div>
       )}
 
-      <header className="detalhe-header">
+      <header className="detalhe-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link to="/" className="btn-voltar">
           <FiArrowLeft size={20} /> Voltar para a Loja
+        </Link>
+        
+        {/* NOVO: Ícone do carrinho adicionado no canto superior direito da tela de detalhes! */}
+        <Link to="/carrinho" style={{ position: 'relative', color: 'var(--texto-escuro)', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <FiShoppingCart size={26} />
+          {qtdCarrinho > 0 && (
+            <span style={{ position: 'absolute', top: '-8px', right: '-12px', backgroundColor: 'var(--cor-vermelho, #DC3545)', color: '#FFF', borderRadius: '50%', padding: '2px 7px', fontSize: '0.8rem', fontWeight: '800' }}>
+              {qtdCarrinho}
+            </span>
+          )}
         </Link>
       </header>
 

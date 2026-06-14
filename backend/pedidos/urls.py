@@ -9,4 +9,5 @@ urlpatterns = [
     
     path('calcular-frete/', views.calcular_frete, name='calcular_frete'),
     path('webhook/', views.webhook_pagamento, name='webhook_pagamento'),
+    
 ]
